@@ -1,10 +1,12 @@
 from django.conf.urls.defaults import patterns, include, url
+from dreamspace.views import all
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
 
 urlpatterns = patterns('',
+                       ('^$', all ),
     # Examples:
     # url(r'^$', 'dreamspace.views.home', name='home'),
     # url(r'^dreamspace/', include('dreamspace.foo.urls')),
