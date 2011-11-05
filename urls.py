@@ -1,5 +1,5 @@
 from django.conf.urls.defaults import patterns, include, url
-from dreamspace.views import all, posting
+from dreamspace.views import *
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -8,6 +8,8 @@ from dreamspace.views import all, posting
 urlpatterns = patterns('',
                        ('^$', all ),
                        ('^posting$', posting ),
+                       ('^posted$', posted),
+                       ('^drop$', drop ),
     # Examples:
     # url(r'^$', 'dreamspace.views.home', name='home'),
     # url(r'^dreamspace/', include('dreamspace.foo.urls')),
