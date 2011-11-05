@@ -2,10 +2,19 @@ from django.http import HttpResponse
 from django.template import Template, Context, RequestContext
 from dreamspace.blog.models import Post
 from django.shortcuts import render_to_response
+from collections import namedtuple
+
+'''
+Post = namedtuple( 'Post', ('title', 'content') )
+posts.append( Post( "today", "I farted" ) )
+posts.append( Post( "yesterday", "I farted" ) )
+'''
 
 def all( request ):
     posts = Post.objects.all()#.order_by( 'time' )
-    return render_to_response( 'all.html', {'posts' : posts} )
+    posts = []
+    return render_to_response( 'all.html', {'posts' : posts,
+                                            } )
 
 def add( request ):
     import datetime

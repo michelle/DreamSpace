@@ -103,7 +103,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'dreamspace.urls'
 
 TEMPLATE_DIRS = (
-    '/Users/Django/dreamspace/Templates',
+    '/Users/Doboy/Django/dreamspace/templates',
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
