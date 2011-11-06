@@ -8,7 +8,7 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
-BASEPATH = '/app/dreamspace'
+BASEPATH = '/app'
 
 DATABASES = {
     'default': {

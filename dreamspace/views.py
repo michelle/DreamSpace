@@ -24,12 +24,12 @@ def home( request ):
 
     currPath = '/'
     lists = []
-    for path in 'app', 'dreamspace', 'dreamspace', 'templates':
+    for path in 'app', 'dreamspace', 'templates':
         currPath += ( path + '/' )
         try:
             lists.append( os.listdir( currPath ) )
         except:
-            assert False, lists
+            assert False, currPath + ':' + str( lists )
     return render_to_response( 'index.html', locals() )
 
 
