@@ -1,22 +1,21 @@
 from django.conf.urls.defaults import patterns, include, url
+from django.views.generic.simple import direct_to_template
 from dreamspace.views import *
 from django.contrib.auth.views import login, logout
 from django.contrib import admin
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
-# admin.autodiscover()
+admin.autodiscover()
 
 urlpatterns = patterns('',
-                       ('^$', all ),
-                       ('^posting$', posting ),
-                       ('^posted$', posted ),
-                       ('^drop$', drop ),
-                       ('^registration/register$', register ),
-                       ('^success$', success ),
-                       ('^login$', login ),
-                       ('^logout$', logout ),
-                       ('^accounts/profile/$', profile ),
+                       ('^$', home ),
+                       ('^posting/$', posting ),
+                       ('^register/$', register ),
+                       ('^success/$', success ),
+                       ('^login/$', login ),
+                       ('^logout/$', logout ),
+                       (r'^profile/(\w+/)?$', profile ),
     # Examples:
     # url(r'^$', 'dreamspace.views.home', name='home'),
     # url(r'^dreamspace/', include('dreamspace.foo.urls')),
@@ -27,3 +26,4 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
                            url(r'^admin/', include(admin.site.urls)),
 )
+
