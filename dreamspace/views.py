@@ -21,10 +21,15 @@ def home( request ):
     username = isAuthUser( request )
     posts = Post.objects.all().order_by( 'created' )
     users = User.objects.all()
-    assert False, ( os.listdir( '/' ),
-                    os.listdir( '/app' ),
-                    os.listdir( 'app/dreamspace' ),
-                    os.listdir( 'app/dreamspace/dreamspace' ), )
+
+    currPath = '/'
+    lists = []
+    for path in 'app', 'dreamspace', 'dreamspace', 'templates':
+        currPath += ( path + '/' )
+        try:
+            lists.append( os.listdir( currPath ) )
+        except:
+            assert False, lists
     return render_to_response( 'index.html', locals() )
 
 
