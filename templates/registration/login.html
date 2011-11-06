@@ -1,0 +1,15 @@
+<html>
+  {% if form.errors %}
+    <p class="error">Sorry, that's not a valid username or password</p>
+  {% endif %}
+
+  <form method='post' action=''>
+    {% csrf_token %}
+    <p> username </p>
+    <input type='text' name='username'><br/>
+    <p> password </p>
+    <input type='password' name='password'><br/>
+    <input type='submit' value='login'/>
+    <input type='hidden' name='next' value="{{ next|escape }}" />
+  </form>
+</html>
