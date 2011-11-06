@@ -1,4 +1,7 @@
-<html>
-  <a href='../'> Go back to main page </a>
-  <h3> Your previous action was successful </h3>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+  <h3> {{ success }} </h3>
+{% endblock %}
+
+

@@ -1,14 +1,10 @@
-<html>
-  {% if loggedIn %}
-    <a href='/login'>Log in to post your dreams!</a>
-  {% else %}
-    You are currently logged in as {{ username }}, 
-    <a href='/logout'>Not {{ username }}?</a>
-  {% endif %}
-    <h2> {{ username }}'s Postings </h2>
+{% extends "base.html" %}
+
+{% block content %}
+  <h2> {{ profile }}'s Postings </h2>
   {% for post in posts %}
     <h3> Title: {{ post.title }} </h3>
     <p> Content: {{ post.content }} </p>
     <p> created: {{ post.created }} </p>
   {% endfor %}
-</html>
+{% endblock %}
