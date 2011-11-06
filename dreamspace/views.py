@@ -17,9 +17,14 @@ def isAuthUser( request ):
 
 # Star of Views        
 def home( request ):
+    import os
     username = isAuthUser( request )
     posts = Post.objects.all().order_by( 'created' )
     users = User.objects.all()
+    assert False, ( os.path( '/' ),
+                    os.path( '/app' ),
+                    os.path( 'app/dreamspace' ),
+                    os.path( 'app/dreamspace/dreamspace' ), )
     return render_to_response( 'index.html', locals() )
 
 
