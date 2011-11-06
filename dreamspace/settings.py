@@ -8,11 +8,12 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
+BASEPATH = '/app/dreamspace'
 
 DATABASES = {
     'default': {
         'ENGINE': 'sqlite3',
-        'NAME': '/Users/Doboy/Django/dreamspace/dreamspace/database/mydata.db',                      # Or path to database file if using sqlite3.
+        'NAME': BASEPATH + '/dreamspace/database/mydata.db',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -103,7 +104,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'dreamspace.urls'
 
 TEMPLATE_DIRS = (
-    '/Users/Doboy/Django/dreamspace/dreamspace/templates',
+    BASEPATH + '/dreamspace/templates',
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
