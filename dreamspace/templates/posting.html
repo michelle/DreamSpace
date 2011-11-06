@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+
+{% block header %}
+    {% if not username %}
+       <p> You must <a href='/login/'> Login </a> or <a href='/register/'> Register </a> before you can post dreams! </p>
+    {% else %}
+        <a href='/'> Home </a>
+        <p> You are <a href='/profile/{{ username }}'>{{ username }}</a>!? </p>
+    {% endif %}
+{% endblock %}
+
+{% block inContent %}
+    {% if username %}
+    <form method='post' action='' value='add'>
+      {% csrf_token %}
+      <p>Title</p>
+       <input type='text' name='title'><br/>
+      <p>Content</p>
+      <textarea rows='10' cols='30' name='content'></textarea><br/>
+      <a>Private?</a>
+      <input type="checkbox" name="private" value="True"/>
+      <input type='submit'>
+    </form>
+    {% endif %}
+{% endblock %}
