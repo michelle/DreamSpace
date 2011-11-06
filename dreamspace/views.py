@@ -32,6 +32,9 @@ def profile( request, person=None):
         errors = True
     return render_to_response( 'profile.html', locals() )
 
+def about( request ):
+    return render_to_response( 'about.html' )
+
 def register( request ):
     if request.method == 'POST':
         form = UserCreationForm( request.POST )

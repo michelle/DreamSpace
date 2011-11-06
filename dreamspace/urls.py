@@ -10,6 +10,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
                        ('^$', home ),
+                       ('^about/$', about ),
                        ('^posting/$', posting ),
                        ('^register/$', register ),
                        ('^success/$', success ),
