@@ -17,19 +17,9 @@ def isAuthUser( request ):
 
 # Star of Views        
 def home( request ):
-    import os
     username = isAuthUser( request )
     posts = Post.objects.all().order_by( 'created' )
     users = User.objects.all()
-
-    currPath = '/'
-    lists = []
-    for path in 'app', 'dreamspace', 'templates':
-        currPath += ( path + '/' )
-        try:
-            lists.append( os.listdir( currPath ) )
-        except:
-            assert False, currPath + ':' + str( lists )
     return render_to_response( 'index.html', locals() )
 
 

@@ -12,8 +12,8 @@ BASEPATH = '/app'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'sqlite3',
-        'NAME': BASEPATH + '/dreamspace/database/mydata.db',                      # Or path to database file if using sqlite3.
+        'ENGINE': 'postgresql_psycopg2',
+        'NAME': 'mydb',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
