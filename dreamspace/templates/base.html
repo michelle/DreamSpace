@@ -37,10 +37,12 @@
 
   {% block postz %}
     {% for post in posts %}
-       <h3> Title: <a href="{{ post.id }}" >{{ post.title }} </a></h3>
-       <p> Content: {{ post.content }} </p>
-       <p> created date: {{ post.created }} </p>
-       <p> created by: {{ post.user }} </p>
+       {% if post.public %}
+         <h3> Title: <a href="{{ post.id }}" >{{ post.title }} </a></h3>
+         <p> Content: {{ post.content }} </p>
+         <p> created date: {{ post.created }} </p>
+         <p> created by: {{ post.user }} </p>
+       {% endif %}
     {% endfor %}
   {% endblock %}
 
