@@ -42,7 +42,7 @@ def posts( request, postid ):
     public = post.public
     user = post.user
     posts = [ post ]
-    return render_to_response( 'posts.hmtl', locals() )
+    return render_to_response( 'posts.html', locals() )
 
 def about( request ):
     return render_to_response( 'about.html' )
