@@ -33,7 +33,7 @@
   {% endblock %}
 
 
-  {$ if posts %}{% block poststitle %}<h3>Recent Post</h3>{% endblock %}{% endif %}
+  {% if posts %}{% block poststitle %}<h3>Recent Post</h3>{% endblock %}{% endif %}
 
   {% block postz %}
     {% for post in posts %}
