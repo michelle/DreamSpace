@@ -37,6 +37,7 @@
 
   {% block postz %}
     {% for post in posts %}
+       {{ post.public }}
        {% if post.public %}
          <h3> Title: <a href="{{ post.id }}" >{{ post.title }} </a></h3>
          <p> Content: {{ post.content }} </p>

@@ -20,7 +20,6 @@ def isAuthUser( request ):
 
 # Star of Views        
 def home( request ):
-    return render_to_response( 'index.html', locals() )
     username = isAuthUser( request )
     posts = Post.objects.all().order_by( 'time' )
     users = User.objects.all()
