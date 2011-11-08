@@ -1,15 +1,16 @@
 # Django settings for dreamspace project.
-import socket
+import socket, os
 
 if "local" in socket.gethostname():
+    BASEPATH = os.path.realpath(os.path.dirname(__file__)) + '/..'
     ENGINE = 'sqlite3'
-    BASEPATH = '/Users/Doboy/Django/dreamspace/'
-    DBNAME = '/Users/Doboy/Django/dreamspace/database.db'
+    DBNAME = BASEPATH + '/database.db'
 else:
     ENGINE = 'postgresql_psycopg2'
     BASEPATH = '/app'
     DBNAME = 'mydb'
 
+print BASEPATH
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
