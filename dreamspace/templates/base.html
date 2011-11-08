@@ -24,8 +24,7 @@
   {% block outContent %}
   {% endblock %}
 
-  
-  {% block usersTitle %}Recent Users{% endblock %}
+  {% if users %}{% block usersTitle %}<h3>Recent Users</h3>{% endblock %}{% endif %}
 
   {% block users %}
     {% for user in users %}
@@ -34,7 +33,7 @@
   {% endblock %}
 
 
-  {% block poststitle %}Recent Post{% endblock %}
+  {$ if posts %}{% block poststitle %}<h3>Recent Post</h3>{% endblock %}{% endif %}
 
   {% block posts %}
     {% for post in posts %}

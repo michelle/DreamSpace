@@ -37,6 +37,7 @@ def about( request ):
 
 def register( request ):
     if request.method == 'POST':
+        assert False, str( request.POST )
         form = UserCreationForm( request.POST )
         if form.is_valid():
             new_user = form.save()
@@ -59,3 +60,6 @@ def posting( request ):
 
 def success( request ):
     return render_to_response( 'success.html' )
+
+
+

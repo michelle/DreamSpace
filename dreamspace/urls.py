@@ -17,6 +17,7 @@ urlpatterns = patterns('',
                        ('^login/$', login ),
                        ('^logout/$', logout ),
                        (r'^profile/(\w+/)?$', profile ),
+                       ('^gen/', gen ),
     # Examples:
     # url(r'^$', 'dreamspace.views.home', name='home'),
     # url(r'^dreamspace/', include('dreamspace.foo.urls')),
