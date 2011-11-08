@@ -76,5 +76,5 @@ def gen( request ):
                                           ( 'fallen', 'fell', 'last night I dreamt that I was falling and woke up upruptly', False ),
                                           ( 'dreamz', 'dreamy', 'last night I dreamt of a dreamy boy in class', True ) ):
         if not Post.objects.filter( content=content ):
-            Post( title=title, content=content, user=user ).save()
+            Post( title=title, content=content, user=user, public=public ).save()
     return HttpResponse( 'itz done' )
