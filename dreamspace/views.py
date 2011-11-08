@@ -1,5 +1,4 @@
 from django.contrib.auth.models import User
-print help( User )
 
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
@@ -18,7 +17,7 @@ def isAuthUser( request ):
 
 # End of Helper procedures
 
-# Star of Views        
+# Star of Views
 def home( request ):
     username = isAuthUser( request )
     posts = Post.objects.all().order_by( 'time' )
@@ -48,8 +47,12 @@ def delete( request, postid ):
     username = isAuthUser( request )
     post = Post.objects.get( id=postid )
     if post.user == username:
+        post.delete()
         success = "Post was successfully deleted"
-        return redner_to_responseC( request, 'success.html', locals () )
+        return render_to_responseC( request, 'success.html', locals () )
+
+def edit( request, postid ):
+    pass # TODO
 
 def about( request ):
     return render_to_response( 'about.html' )
@@ -69,7 +72,8 @@ def posting( request ):
     if request.method == 'POST':
         title = request.POST[ 'title' ]
         content = request.POST[ 'content' ]
-        public = request.POST[ 'public' ]
+        public = request.POST.get( 'public', False )
+        print public
         if username and title and content:
             Post( title=title, content=content, user=request.user.username, public=public ).save()
             success = "Post was successfully created"

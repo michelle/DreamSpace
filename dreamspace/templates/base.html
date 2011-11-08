@@ -21,6 +21,9 @@
   {% block inContent %}
   {% endblock %}
 
+  {% block content %}
+  {% endblock %}
+
   {% block outContent %}
   {% endblock %}
 
@@ -37,7 +40,7 @@
 
   {% block postz %}
     {% for post in posts %}
-       {% if post.public %}
+       {% if post.public or username == post.user %}
          <h3> Title: <a href="/posts/{{ post.id }}" >{{ post.title }} </a></h3>
          <p> Content: {{ post.content }} </p>
          <p> created date: {{ post.time }} </p>

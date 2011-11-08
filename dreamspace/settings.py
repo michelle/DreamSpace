@@ -1,4 +1,15 @@
 # Django settings for dreamspace project.
+import socket
+
+if "local" in socket.gethostname():
+    ENGINE = 'sqlite3'
+    BASEPATH = '/Users/Doboy/Django/dreamspace/'
+    DBNAME = '/Users/Doboy/Django/dreamspace/database.db'
+else:
+    ENGINE = 'postgresql_psycopg2'
+    BASEPATH = '/app'
+    DBNAME = 'mydb'
+
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -8,12 +19,12 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
-BASEPATH = '/app'
+
 
 DATABASES = {
     'default': {
-        'ENGINE': 'postgresql_psycopg2',
-        'NAME': 'mydb',                      # Or path to database file if using sqlite3.
+        'ENGINE': ENGINE,
+        'NAME': DBNAME,                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
