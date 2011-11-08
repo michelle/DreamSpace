@@ -26,7 +26,7 @@
 
   {% if users %}{% block usersTitle %}<h3>Recent Users</h3>{% endblock %}{% endif %}
 
-  {% block users %}
+  {% block userz %}
     {% for user in users %}
       <p><a href='profile/{{ user.username }}'> {{ user.username }} </a></p>
     {% endfor %}
@@ -35,7 +35,7 @@
 
   {$ if posts %}{% block poststitle %}<h3>Recent Post</h3>{% endblock %}{% endif %}
 
-  {% block posts %}
+  {% block postz %}
     {% for post in posts %}
        <h3> Title: <a href="{{ post.id }}" >{{ post.title }} </a></h3>
        <p> Content: {{ post.content }} </p>
