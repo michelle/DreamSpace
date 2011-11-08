@@ -36,11 +36,12 @@ def profile( request, person=None):
 
 def posts( request, postid ):
     username = isAuthUser( request )
-    posts = [Post.objects.get( id=postid )]
-    title = Post.title
-    content = Post.content
-    public = Post.public
-    user = Post.user
+    post = Post.objects.get( id=postid )
+    title = posts.title
+    content = posts.content
+    public = post.public
+    user = post.user
+    posts = [ post ]
     return render_to_reponse( 'posts.hmtl', locals() )
 
 def about( request ):
