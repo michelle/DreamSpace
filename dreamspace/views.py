@@ -74,5 +74,5 @@ def gen( request ):
     for user, title, content, public in ( ( 'rising', 'rosen', 'last night I dreamt of flying in the sky', False ),
                                           ( 'fallen', 'fell', 'last night I dreamt that I was falling and woke up upruptly', False ),
                                           ( 'dreamz', 'dreamy', 'last night I dreamt of a dreamy boy in class', True ) ):
-        Post( title=title, content=content, user=user, public=public ).save()
+        Post( title=title, content=content, user=user ).save()
     return HttpResponse( 'itz done' )
