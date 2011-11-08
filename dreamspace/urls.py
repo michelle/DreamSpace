@@ -18,6 +18,8 @@ urlpatterns = patterns('',
                        ('^logout/$', logout ),
                        (r'^profile/(\w+/)?$', profile ),
                        (r'posts/(\d+)/$', posts ),
+                       (r'posts/(\d+)/edit$', edit ),
+                       (r'posts/(\d+)/delete$', delete ),
                        ('^gen/', gen ),
     # Examples:
     # url(r'^$', 'dreamspace.views.home', name='home'),

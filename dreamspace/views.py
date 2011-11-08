@@ -44,6 +44,13 @@ def posts( request, postid ):
     posts = [ post ]
     return render_to_response( 'posts.html', locals() )
 
+def delete( request, postid ):
+    username = isAuthUser( request )
+    post = Post.objects.get( id=postid )
+    if post.user == username:
+        success = "Post was successfully deleted"
+        return redner_to_responseC( request, 'success.html', locals () )
+
 def about( request ):
     return render_to_response( 'about.html' )
 
@@ -72,8 +79,6 @@ def posting( request ):
 def success( request ):
     return render_to_response( 'success.html' )
 
-
-
 def gen( request ):
     for user, pw1, pw2 in ( ('rising', 'foobar', 'foobar' ),
                             ('fallen', 'foobar', 'foobar' ),
@@ -86,3 +91,4 @@ def gen( request ):
         if not Post.objects.filter( content=content ):
             Post( title=title, content=content, user=user, public=public ).save()
     return HttpResponse( 'itz done' )
+
