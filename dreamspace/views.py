@@ -72,9 +72,9 @@ def gen( request ):
                             ('dreamz', 'foobar', 'foobar' ) ):
         if not User.objects.filter( username=user ):
             User( username=user, password=pw1 ).save()
-    for user, title, content, public in ( ( 'rising', 'rosen', 'last night I dreamt of flying in the sky', False ),
-                                          ( 'fallen', 'fell', 'last night I dreamt that I was falling and woke up upruptly', False ),
-                                          ( 'dreamz', 'dreamy', 'last night I dreamt of a dreamy boy in class', True ) ):
+    for user, title, content, public in ( ( 'rising', 'rosen', 'last night I dreamt of flying in the sky', True ),
+                                          ( 'fallen', 'fell', 'last night I dreamt that I was falling and woke up upruptly', True ),
+                                          ( 'dreamz', 'dreamy', 'last night I dreamt of a dreamy boy in class', False ) ):
         if not Post.objects.filter( content=content ):
             Post( title=title, content=content, user=user, public=public ).save()
     return HttpResponse( 'itz done' )
