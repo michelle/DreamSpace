@@ -34,12 +34,20 @@ def profile( request, person=None):
         errors = True
     return render_to_response( 'profile.html', locals() )
 
+def posts( request, postid ):
+    username = isAuthUser( request )
+    posts = [Post.objects.get( id=postid )]
+    title = Post.title
+    content = Post.content
+    public = Post.public
+    user = Post.user
+    return render_to_reponse( 'posts.hmtl', locals() )
+
 def about( request ):
     return render_to_response( 'about.html' )
 
 def register( request ):
     if request.method == 'POST':
-        assert False, str( request.POST )
         form = UserCreationForm( request.POST )
         if form.is_valid():
             new_user = form.save()

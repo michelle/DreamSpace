@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block userTitle %}{% endblock %}
+{% block userz %}{% endblock %}
+{% block poststitle %}{% endblock %}
+
+{% block postz %}
+{% ifequal username user %} {{ block.super }} {% endif %}
+{% endblock %}
