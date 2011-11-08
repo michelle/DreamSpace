@@ -67,7 +67,7 @@ def gen( request ):
     for user, pw1, pw2 in ( ('rising', 'foobar', 'foobar' ),
                             ('fallen', 'foobar', 'foobar' ),
                             ('dreamz', 'foobar', 'foobar' ) ):
-        UserCreationFrom( username=user, password1=pw1, password=pw2 ).save()
+        UserCreationForm( username=user, password1=pw1, password=pw2 ).save()
     for user, title, content, public in ( ( 'rising', 'rosen', 'last night I dreamt of flying in the sky', False ),
                                           ( 'fallen', 'fell', 'last night I dreamt that I was falling and woke up upruptly', False ),
                                           ( 'dreamz', 'dreamy', 'last night I dreamt of a dreamy boy in class', True ) ):
