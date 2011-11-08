@@ -1,44 +1,57 @@
 <html>
-
 <head>
-{% block assets %}
-{% endblock %}
+{% block assets %}{% endblock %}
+{% block javascript %}{% endblock %}
 </head>
 
-</body>
-{% block header %}
-    {% block inHeader %}
-        {% if username %}
-        <a href='/'> Home </a>
-        <p> You are <a href='/profile/{{ username }}'>{{ username }}</a>!? </p>
+<body>
+  <!--Header-->
+  {% block inHeader %}{% if username %}
+  <a href='/'> Home </a>
+  <p> You are <a href='/profile/{{ username }}'>{{ username }}</a>!? </p>
 	<a href='/posting/'> Post a dream! </a>
-        {% endif %}
-    {% endblock %}
-    {% block outHeader %}
-       {% if not username %}
-         <p> <a href='/login/'> Login </a> or <a href='register/'> Register </a> to track your dreams! </p>
-       {% endif %}
-    {% endblock %}
-{% endblock %}
+  {% endif %}{% endblock %}
 
-{% block content %}
-    {% block inContent %}
-        {% if username %}
-        <p> You are <a href='/profile/{{ username }}'>{{ username }}</a>!? </p>
-    {% endif %}
-    {% endblock %}
-    {% if not username %}
-        {% block outContent %}
-        {% endblock %}
-    {% endif %}
+  {% block outHeader %}{% if not username %}
+  <p> <a href='/login/'> Login </a> or <a href='register/'> Register </a> to track your dreams! </p>
+  {% endif %}{% endblock %}
 
-{% endblock %}
+  <!--Content-->
 
-{% block footer %}
-    {% if username %}
-        <a href='/logout/'> Logout </a>
-    {% endif %}
-    <a href='/about/'> About </a>
-{% endblock %}
+  {% block inContent %}
+  {% endblock %}
+
+  {% block outContent %}
+  {% endblock %}
+
+  {% block usersTitle %}Recent Users{% endblock %}
+
+  {% block users %}
+    {% for user in users %}
+      <p><a href='profile/{{ user.username }}'> {{ user.username }} </a></p>
+    {% endfor %}
+  {% endblock %}
+
+
+  {% block poststitle %}Recent Post{% endblock %}
+
+  {% block posts %}
+    {% for post in posts %}
+       <h3> Title: <a href="{{ post.id }}" >{{ post.title }} </a></h3>
+       <p> Content: {{ post.content }} </p>
+       <p> created date: {{ post.created }} </p>
+       <p> created by: {{ post.user }} </p>
+    {% endfor %}
+  {% endblock %}
+
+  <!--Footer-->
+  {% block inFooter %}{% if username %}
+  <a href='/logout/'> Logout </a>
+  {% endif %}{% endblock %}
+
+  {% block outFotter %}{% if not username %}
+  <a href='/about/'> About </a>
+  {% endif %}{% endblock %}
+
 </body>
 </html>

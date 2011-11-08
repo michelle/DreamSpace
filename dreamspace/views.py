@@ -18,16 +18,15 @@ def isAuthUser( request ):
 # Star of Views        
 def home( request ):
     username = isAuthUser( request )
-    posts = Post.objects.all().order_by( 'created' )
+    posts = Post.objects.all().order_by( 'time' )
     users = User.objects.all()
     return render_to_response( 'index.html', locals() )
-
 
 def profile( request, person=None):
     username = isAuthUser( request )
     profile = person[:-1] if person else username
     if profile:
-        posts = Post.objects.filter(user=profile).order_by( 'created' )
+        posts = Post.objects.filter(user=profile).order_by( 'time' )
     else:
         errors = True
     return render_to_response( 'profile.html', locals() )
@@ -50,12 +49,12 @@ def posting( request ):
     if request.method == 'POST':
         title = request.POST[ 'title' ]
         content = request.POST[ 'content' ]
+        public = request.POST[ 'public' ]
         if username and title and content:
-            Post( title=title, content=content, user=request.user.username ).save()
+            Post( title=title, content=content, user=request.user.username, public=public ).save()
             success = "Post was successfully created"
             return render_to_responseC( request, 'success.html', locals() )
     return render_to_responseC( request, 'posting.html', locals() )
 
 def success( request ):
     return render_to_response( 'success.html' )
-
