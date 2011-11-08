@@ -1,3 +1,6 @@
+from django.contrib.auth.models import User
+print help( User )
+
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
@@ -67,7 +70,7 @@ def gen( request ):
     for user, pw1, pw2 in ( ('rising', 'foobar', 'foobar' ),
                             ('fallen', 'foobar', 'foobar' ),
                             ('dreamz', 'foobar', 'foobar' ) ):
-        UserCreationForm( username=user, password1=pw1, password=pw2 ).save()
+        User( username=user, password=pw1 ).save()
     for user, title, content, public in ( ( 'rising', 'rosen', 'last night I dreamt of flying in the sky', False ),
                                           ( 'fallen', 'fell', 'last night I dreamt that I was falling and woke up upruptly', False ),
                                           ( 'dreamz', 'dreamy', 'last night I dreamt of a dreamy boy in class', True ) ):
