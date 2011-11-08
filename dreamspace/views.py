@@ -37,8 +37,8 @@ def profile( request, person=None):
 def posts( request, postid ):
     username = isAuthUser( request )
     post = Post.objects.get( id=postid )
-    title = posts.title
-    content = posts.content
+    title = post.title
+    content = post.content
     public = post.public
     user = post.user
     posts = [ post ]

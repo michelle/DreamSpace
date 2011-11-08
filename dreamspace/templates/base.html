@@ -40,7 +40,7 @@
        {% if post.public %}
          <h3> Title: <a href="posts/{{ post.id }}" >{{ post.title }} </a></h3>
          <p> Content: {{ post.content }} </p>
-         <p> created date: {{ post.created }} </p>
+         <p> created date: {{ post.time }} </p>
          <p> created by: {{ post.user }} </p>
        {% endif %}
     {% endfor %}
