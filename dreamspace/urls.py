@@ -8,6 +8,20 @@ from django.contrib import admin
 # from django.contrib import admin
 admin.autodiscover()
 
+def gen( request ):
+    for user, pw1 in ( ('rising', 'foobar' ),
+                       ('fallen','foobar' ),
+                       ('dreamz','foobar' ) ):
+        if not User.objects.filter( username=user ):
+            User( username=user, password=pw1 ).save()
+    for user, title, content, public in ( ( 'rising', 'rosen', 'last night I dreamt of flying in the sky', True ),
+                                          ( 'fallen', 'fell', 'last night I dreamt that I was falling and woke up upruptly', True ),
+                                          ( 'dreamz', 'dreamy', 'last night I dreamt of a dreamy boy in class', False ) ):
+        if not Post.objects.filter( content=content ):
+            Post( title=title, content=content, user=user, public=public ).save()
+    return HttpResponse( 'itz done' )
+
+
 urlpatterns = patterns('',
                        ('^$', home ),
                        ('^about/$', about ),
@@ -16,19 +30,11 @@ urlpatterns = patterns('',
                        ('^success/$', success ),
                        ('^login/$', login ),
                        ('^logout/$', logout ),
-                       (r'^profile/(\w+/)?$', profile ),
+                       (r'^profile/(\w+)?/?$', profile ),
                        (r'^posts/(\d+)/$', posts ),
                        (r'^posts/(\d+)/edit/$', edit ),
                        (r'^posts/(\d+)/delete/$', delete ),
                        ('^gen/', gen ),
-    # Examples:
-    # url(r'^$', 'dreamspace.views.home', name='home'),
-    # url(r'^dreamspace/', include('dreamspace.foo.urls')),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
-                           url(r'^admin/', include(admin.site.urls)),
+                       url(r'^admin/', include(admin.site.urls)),
 )
 

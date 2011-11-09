@@ -5,7 +5,6 @@
 {% block poststitle %}{% endblock %}
 
 {% block postz %}
-{{ username }} {{ user }}
-{% if username == user or public %} {{ block.super }} {% endif %}
-{% if username == user %} <a href="delete/"> Delete Post</a> <a href="edit/"> Edit Post Comming Soon... </a> {% endif %}
+{{ block.super }}
+{% if inGuy == post.user %} <a href="delete/"> Delete Post</a> <a href="edit/"> Edit Post </a> {% endif %}
 {% endblock %}

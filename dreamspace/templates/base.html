@@ -6,17 +6,23 @@
 
 <body>
   <!--Header-->
-  {% block inHeader %}{% if username %}
+  {% block inHeader %}{% if inGuy%}
   <a href='/'> Home </a>
-  <p> You are <a href='/profile/{{ username }}'>{{ username }}</a>!? </p>
+  <p> You are <a href='/profile/{{ inGuy}}'>{{ inGuy}}</a>!? </p>
 	<a href='/posting/'> Post a dream! </a>
   {% endif %}{% endblock %}
 
-  {% block outHeader %}{% if not username %}
+  {% block outHeader %}{% if not inGuy%}
   <p> <a href='/login/'> Login </a> or <a href='register/'> Register </a> to track your dreams! </p>
   {% endif %}{% endblock %}
 
   <!--Content-->
+
+  {% block errorz %}
+     {% for error in errors %}
+         {{ error }}
+     {% endfor %}
+  {% endblock %}
 
   {% block inContent %}
   {% endblock %}
@@ -35,12 +41,11 @@
     {% endfor %}
   {% endblock %}
 
-
   {% if posts %}{% block poststitle %}<h3>Recent Post</h3>{% endblock %}{% endif %}
 
   {% block postz %}
     {% for post in posts %}
-       {% if post.public or username == post.user %}
+       {% if post.public or inGuy == post.user %}
          <h3> Title: <a href="/posts/{{ post.id }}" >{{ post.title }} </a></h3>
          <p> Content: {{ post.content }} </p>
          <p> created date: {{ post.time }} </p>
@@ -50,11 +55,11 @@
   {% endblock %}
 
   <!--Footer-->
-  {% block inFooter %}{% if username %}
+  {% block inFooter %}{% if inGuy %}
   <a href='/logout/'> Logout </a>
   {% endif %}{% endblock %}
 
-  {% block outFotter %}{% if not username %}
+  {% block outFotter %}{% if not inGuy %}
   <a href='/about/'> About </a>
   {% endif %}{% endblock %}
 

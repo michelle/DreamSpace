@@ -10,8 +10,6 @@ else:
     BASEPATH = '/app'
     DBNAME = 'mydb'
 
-print BASEPATH
-
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
