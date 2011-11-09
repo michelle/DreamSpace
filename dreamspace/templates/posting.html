@@ -17,7 +17,7 @@
   <p>Content</p>
   <textarea rows='10' cols='30' name='content' {% if contentError %}class="contentError"{% endif %} >{{ post.content }} </textarea><br/>
   <a>Public?</a>
-  <input type='checkbox' name='public' {% if post.public %}checked{% endif %}/>
+  <input type='checkbox' name='public' {% if not post.public %}checked{% endif %}/>
   <input type='submit'>
 </form>
 {% endif %}{% endblock %}
