@@ -1,23 +1,109 @@
 <html>
 <head>
 {% block assets %}{% endblock %}
+<title>DreamSpace</title>
+<link href='http://fonts.googleapis.com/css?family=Actor' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Supermercado+One' rel='stylesheet' type='text/css'>
+<style>
+
+html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,th,var,optgroup{font-style:inherit;font-weight:inherit;}del,ins{text-decoration:none;}li{list-style:none;}caption,th{text-align:left;}q:before,q:after{content:'';}abbr,acronym{border:0;font-variant:normal;}sup{vertical-align:baseline;}sub{vertical-align:baseline;}legend{color:#000;}input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;}input,button,textarea,select{font-size:100%;}
+a {outline: none;} /* Gets rid of Firefox's dotted borders */
+a img {border: none;} /* Gets rid of IE's blue borders */
+
+.clear {
+  clear: both;
+}
+
+html, body {
+  font-family: 'Actor', sans-serif;
+  font-size: 15px;
+  letter-spacing:1px;
+}
+
+#wrap {
+  margin: 0 auto;
+  width: 700px;
+  margin-top: 25px;
+}
+
+a {
+  text-decoration: none;
+  color: #
+}
+
+#header {
+  
+}
+
+#title {
+  font-family: 'Satisfy', cursive;
+  font-size: 70px;
+  font-weight: normal;
+  color: #b5d5f6;
+  float: left;
+  text-shadow: 1px 1px 1px #6798ca;
+}
+
+#title, .topbar {
+  line-height: 100px;
+}
+
+#footer {
+
+}
+
+#content {
+
+}
+
+h2 {
+  font-family: 'Supermercado One', cursive;
+  font-weight: normal;
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+.topbar {
+  float: right;
+  margin-left: 30px;
+}
+
+button {
+  padding: 10px;
+  border: 0;
+  color: #fff;
+  background-color: #ccc;
+}
+
+
+</style>
 {% block javascript %}{% endblock %}
 </head>
 
 <body>
+<div id="wrap">
   <!--Header-->
+  <div id="header">
+  <span id="title">DreamSpace</span>
   {% block inHeader %}{% if inGuy%}
-  <a href='/'> Home </a>
-  <p> You are <a href='/profile/{{ inGuy}}'>{{ inGuy}}</a>!? </p>
-	<a href='/posting/'> Post a dream! </a>
+  <span class="topbar"><a href='/'> Home </a></span><span class="topbar">
+  You are <a href='/profile/{{ inGuy}}'>{{ inGuy}}</a>.</span>
+  <div class="clear"></div>
+	<a href='/posting/'><button id="post"> Post a dream! </button></a>
   {% endif %}{% endblock %}
 
   {% block outHeader %}{% if not inGuy%}
   <p> <a href='/login/'> Login </a> or <a href='register/'> Register </a> to track your dreams! </p>
   {% endif %}{% endblock %}
+  </div>
 
   <!--Content-->
 
+  <div id="content">
   {% block errorz %}
      {% for error in errors %}
          {{ error }}
@@ -33,7 +119,7 @@
   {% block outContent %}
   {% endblock %}
 
-  {% if users %}{% block usersTitle %}<h3>Recent Users</h3>{% endblock %}{% endif %}
+  {% if users %}{% block usersTitle %}<h2>Recent Users</h2>{% endblock %}{% endif %}
 
   {% block userz %}
     {% for user in users %}
@@ -41,7 +127,7 @@
     {% endfor %}
   {% endblock %}
 
-  {% if posts %}{% block poststitle %}<h3>Recent Post</h3>{% endblock %}{% endif %}
+  {% if posts %}{% block poststitle %}<h2>Recent Posts</h2>{% endblock %}{% endif %}
 
   {% block postz %}
     {% for post in posts %}
@@ -54,8 +140,10 @@
        {% endif %}
     {% endfor %}
   {% endblock %}
+  </div>
 
   <!--Footer-->
+  <div id="footer">
   {% block inFooter %}{% if inGuy %}
   <a href='/logout/'> Logout </a>
   {% endif %}{% endblock %}
@@ -63,6 +151,7 @@
   {% block outFotter %}{% if not inGuy %}
   <a href='/about/'> About </a>
   {% endif %}{% endblock %}
-
+  </div>
+</div>
 </body>
 </html>
