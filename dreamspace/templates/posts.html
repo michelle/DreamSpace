@@ -9,7 +9,7 @@
 {% if inGuy != post.user.username %} 
 <form method='post' action='' value='add'>
     {% csrf_token %}
-    <input type='submit' value='like{% if liked %}d' disabled='disabled{% endif %}'>
+    <input type='submit' class="button" value='like{% if liked %}d' disabled='disabled{% endif %}'>
 </form>
 {% endif %}
 {% if inGuy == post.user.username %} <a href="delete/"> Delete Post</a> <a href="edit/"> Edit Post </a> {% endif %}
