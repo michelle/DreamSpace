@@ -1,23 +1,14 @@
 {% extends "base.html" %}
 
-{% block inHeader %}{% if inGuy %}
-<a href='/'> Home </a>
-<p> You are <a href='/profile/{{ inGuy }}'>{{ inGuy }}</a>!? </p>
-{% endif %}{% endblock %}
-
-{% block outHeader %}{% if not inGuy %}
-<p> You must <a href='/login/'> Login </a> or <a href='/register/'> Register </a> before you can post dreams! </p>
-{% endif %}{% endblock %}
-
 {% block inContent %}{% if inGuy %}
 <form method='post' action='' value='add'>
   {% csrf_token %}
   <p>Title</p>
-  <input type='text' name='title' value='{{ post.title }}' {% if titleError %}class="titleError"{% endif %}><br/>
+  <input type='text' class="text" name='title' value='{{ post.title }}' {% if titleError %}class="titleError"{% endif %}><br/>
   <p>Content</p>
-  <textarea rows='10' cols='30' name='content' {% if contentError %}class="contentError"{% endif %} >{{ post.content }} </textarea><br/>
+  <textarea class="text" rows='10' cols='30' name='content' {% if contentError %}class="contentError"{% endif %} >{{ post.content }} </textarea><br/>
   <a>Public?</a>
   <input type='checkbox' name='public' {% if not post.public %}checked{% endif %}/>
-  <input type='submit'>
+  <input type='submit' class="button">
 </form>
 {% endif %}{% endblock %}
