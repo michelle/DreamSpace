@@ -202,8 +202,9 @@ h3 {
      {% endfor %}
   {% endblock %}
 
-  {% block inContent %}
+  {% block inContent %}{% if inGuy %}
   <a href='/posting/'><button id="post"> Post a dream! </button></a>
+  {% endif %}
   {% endblock %}
 
   {% block content %}
