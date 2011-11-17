@@ -1,23 +1,201 @@
 <html>
 <head>
 {% block assets %}{% endblock %}
+<title>DreamSpace</title>
+<link href='http://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Snippet' rel='stylesheet' type='text/css'>
+<style>
+
+html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,th,var,optgroup{font-style:inherit;font-weight:inherit;}del,ins{text-decoration:none;}li{list-style:none;}caption,th{text-align:left;}q:before,q:after{content:'';}abbr,acronym{border:0;font-variant:normal;}sup{vertical-align:baseline;}sub{vertical-align:baseline;}legend{color:#000;}input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;}input,button,textarea,select{font-size:100%;}
+a {outline: none;} /* Gets rid of Firefox's dotted borders */
+a img {border: none;} /* Gets rid of IE's blue borders */
+
+.clear {
+  clear: both;
+}
+
+html, body {
+  font-family: 'Snippet', sans-serif;
+  font-size: 15px;
+  color: #fff;
+  letter-spacing:1px;
+background: rgb(29,55,63); /* Old browsers */
+background: -moz-linear-gradient(45deg,  rgba(29,55,63,1) 0%, rgba(14,14,14,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,rgba(29,55,63,1)), color-stop(100%,rgba(14,14,14,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(45deg,  rgba(29,55,63,1) 0%,rgba(14,14,14,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(45deg,  rgba(29,55,63,1) 0%,rgba(14,14,14,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(45deg,  rgba(29,55,63,1) 0%,rgba(14,14,14,1) 100%); /* IE10+ */
+background: linear-gradient(45deg,  rgba(29,55,63,1) 0%,rgba(14,14,14,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1d373f', endColorstr='#0e0e0e',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+}
+
+#wrap {
+  margin: 0 auto;
+  width: 700px;
+  margin-top: 25px;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+  -webkit-transition:color 450ms ease-in;  
+  -moz-transition:color 450ms ease-in;  
+  -o-transition:color 450ms ease-in;  
+  transition:color 450ms ease-in; 
+}
+
+a:hover {
+  color:#fdf18a;
+}
+
+#header {
+  text-align: center;
+}
+
+#title {
+  font-family: 'Satisfy', cursive;
+  font-size: 70px;
+  font-weight: normal;
+  color: #fdf18a;
+  float: left;
+  /*text-shadow: 1px 1px 1px #3c5c66;*/
+}
+
+#title, .topbar {
+  line-height: 100px;
+}
+
+#footer {
+
+}
+
+#content {
+  clear: both;
+}
+
+h2 {
+  font-family: 'Satisfy', cursive;
+  font-weight: normal;
+  font-size: 30px;
+  color: #fdf18a;
+  text-shadow: 1px 1px 1px #55808e;
+  text-align: left;
+  margin: 30px 0 10px 0;
+}
+
+h3 {
+  font-size: 20px;
+  line-height: 25px;
+  margin: 0 0 10px 0;
+}
+
+.topbar {
+  float: right;
+  margin-left: 20px;
+  text-transform: uppercase;
+}
+
+.topbar a {
+  font-weight: bold;
+}
+
+.button, button, .user {
+  padding: 10px 20px 10px 20px;
+  border: 0;
+  color: #fff;
+  background-color: rgba(265,265,265,.07);
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 10px;
+  -webkit-transition:background-color 450ms ease-in;  
+  -moz-transition:background-color 450ms ease-in;  
+  -o-transition:background-color 450ms ease-in;  
+  transition:background-color 450ms ease-in; 
+}
+
+#id_username, #id_password1, #id_password2, .text {
+  border: 0px;
+  padding: 5px;
+  border-radius: 10px;
+  margin: 10px;
+  font-family: arial;
+}
+
+.user {
+  line-height: 40px;
+}
+
+.button:hover, .user:hover, button:hover {
+  background-color: rgba(265,265,265,.2);
+}
+
+.dream {
+  text-align: left;
+  background: rgb(29,55,63); /* Old browsers */
+  background-color: rgba(265,265,265,.07);
+  padding: 10px;
+  margin-bottom: 20px;
+  line-height: 20px;
+}
+
+.byline {
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.helptext {
+  font-size: 10px;
+  line-height: 15px;
+}
+
+#register p {
+  margin-bottom: 20px;
+}
+
+.postinfo {
+  margin: 10px -10px -10px -10px;
+  font-size: 12px;
+  padding: 5px 0 5px 0;
+  text-align: center;
+  background-color: rgba(265,265,265,.07);
+  opacity: 0.7;
+}
+
+#register {
+  width: 220px;
+  margin: 0 auto;
+}
+
+
+</style>
 {% block javascript %}{% endblock %}
 </head>
 
 <body>
+<div id="wrap">
   <!--Header-->
+  <div id="header">
+  <span id="title">DreamSpace</span>
   {% block inHeader %}{% if inGuy%}
-  <a href='/'> Home </a>
-  <p> You are <a href='/profile/{{ inGuy}}'>{{ inGuy}}</a>!? </p>
-	<a href='/posting/'> Post a dream! </a>
+  
+  <span class="topbar"><a href='/logout/'>Logout</a></span><span class="topbar">
+  <a href='/profile/{{ inGuy}}'>{{ inGuy}}</a></span><span class="topbar"><a href='/'>Home</a></span>
+  <div class="clear"></div>
   {% endif %}{% endblock %}
 
   {% block outHeader %}{% if not inGuy%}
-  <p> <a href='/login/'> Login </a> or <a href='register/'> Register </a> to track your dreams! </p>
+  <span class="topbar"><a href='/login/'> Login </a></span><span class="topbar"><a href='/register/'> Register </a></span><span class="topbar"><a href='/about/'> About </a></span><span class="topbar"><a href='/'>Home</a></span>
   {% endif %}{% endblock %}
+  <div id="clear"></div>
+  </div>
+
 
   <!--Content-->
-
+  
+  <div id="content">
   {% block errorz %}
      {% for error in errors %}
          {{ error }}
@@ -25,6 +203,7 @@
   {% endblock %}
 
   {% block inContent %}
+  <a href='/posting/'><button id="post"> Post a dream! </button></a>
   {% endblock %}
 
   {% block content %}
@@ -33,36 +212,32 @@
   {% block outContent %}
   {% endblock %}
 
-  {% if users %}{% block usersTitle %}<h3>Recent Users</h3>{% endblock %}{% endif %}
-
+  {% if users %}{% block usersTitle %}<h2>Recent Users</h2>{% endblock %}{% endif %}
+  
   {% block userz %}
     {% for user in users %}
-      <p><a href='profile/{{ user.username }}'> {{ user.username }} </a></p>
+      <a href='profile/{{ user.username }}'><span class="user"> {{ user.username }} </span></a>
     {% endfor %}
   {% endblock %}
 
-  {% if posts %}{% block poststitle %}<h3>Recent Post</h3>{% endblock %}{% endif %}
+  {% if posts %}{% block poststitle %}<h2>Recent Posts</h2>{% endblock %}{% endif %}
 
   {% block postz %}
+    {% if not posts %}
+      <br/>Nothing to see here carry on..
+    {% endif %}
     {% for post in posts %}
        {% if post.public or inGuy == post.user.username %}
-         <h3> Title: <a href="/posts/{{ post.id }}" >{{ post.title }} </a></h3>
-         <p> Content: {{ post.content }} </p>
-         <p> created date: {{ post.time }} </p>
-         <p> created by: {{ post.user.username }} </p>
-         <p> liked by: {{ post.likes }} users </p>
+       <div class="dream">
+         <h3><a href="/posts/{{ post.id }}" >{{ post.title }} </a><span class="byline"> by {{ post.user.username }}</span></h3>
+         <p class="postBody"> {{ post.content }} </p>
+         <div class="postinfo">created {{ post.time }} and liked by {{ post.likes }} users. </div>
+        </div>
        {% endif %}
     {% endfor %}
   {% endblock %}
+  </div>
 
-  <!--Footer-->
-  {% block inFooter %}{% if inGuy %}
-  <a href='/logout/'> Logout </a>
-  {% endif %}{% endblock %}
-
-  {% block outFotter %}{% if not inGuy %}
-  <a href='/about/'> About </a>
-  {% endif %}{% endblock %}
-
+</div>
 </body>
 </html>
